@@ -21,6 +21,7 @@
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
+    "@material-ui/core": "^4.9.5",
     "babel-loader": "^8.0.6",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.42.0",
@@ -30,6 +31,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2"
   }
 }
