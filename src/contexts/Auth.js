@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import auth0 from "auth0-js";
+import useLocalStorage from "./../../hooks/useLocalStorage";
 
 export const AuthContext = React.createContext([{}, () => {}]);
 
@@ -9,6 +11,8 @@ export const AuthProvider = ({children}) => {
     isLoggedIn: null,
     currentUser: null
   })
+
+  const [token, setToken] = useLocalStorage("token");
 
   const auth = new auth0.WebAuth({
     domain: "dev-ti7aizas.auth0.com",
@@ -33,8 +37,12 @@ export const AuthProvider = ({children}) => {
   const handleAuthorization = () => {
     auth.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken) {
+        console.log(authResult);
+        setToken(authResult.accessToken);
         setState({ isLoggedIn: true })
         setUser(authResult.accessToken);
+
+        return <Redirect to="/" />;
 
       } else if (err) {
         console.log(err)
