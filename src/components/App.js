@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,25 +8,26 @@ import {
 import Login from "./../pages/Login/Login";
 import Callback from "./../pages/Callback/Callback";
 import { AuthProvider } from "../contexts/Auth";
+import TestComp from "./TestComp/TestComp";
 import CurrentUserChecker from "./CurrentUserChecker/CurrentUserChecker";
 
 const App = () => (
   <AuthProvider>
-    <CurrentUserChecker>
-      <Router>
-        <Switch>
-          <Route path="/" exact>
-            {"Hello"}
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/callback">
-            <Callback />
-          </Route>
-        </Switch>
-      </Router>
-    </CurrentUserChecker>
+      <CurrentUserChecker>
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <TestComp />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/callback">
+              <Callback />
+            </Route>
+          </Switch>
+        </Router>
+      </CurrentUserChecker>
   </AuthProvider>
 );
 

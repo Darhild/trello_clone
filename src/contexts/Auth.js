@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import auth0 from "auth0-js";
-import useLocalStorage from "./../../hooks/useLocalStorage";
+import useLocalStorage from "./../hooks/useLocalStorage";
 
 export const AuthContext = React.createContext([{}, () => {}]);
 
@@ -50,8 +50,13 @@ export const AuthProvider = ({children}) => {
     })
   };
 
+  useEffect(() => {
+    console.log("mount");
+    setUser(token);
+  }, []);
+
   return (
-    <AuthContext.Provider value = {{state, setState, authorize, handleAuthorization}} >
+    <AuthContext.Provider value = {{state, setState, authorize, handleAuthorization, setUser}} >
       {children}
     </AuthContext.Provider>
   )

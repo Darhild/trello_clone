@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
-import auth0 from "auth0-js";
+import React, { useEffect, useContext } from "react";
+import { AuthContext } from "./../../contexts/Auth";
+import useLocalStorage from "./../../hooks/useLocalStorage";
 
-export const CurrentUserChecker = ({children}) => {
-
+const CurrentUserChecker = ({children}) => {
+  const {state, setUser} = useContext(AuthContext);
+  const [token, setToken] = useLocalStorage("token");
 
   useEffect(() => {
-
+    setUser(token);
   }, []);
 
-
   return (
-    <CurrentUserChecker>
+    <CurrentUserChecker value={state}>
       {children}
     </CurrentUserChecker>
-
   )
 }
+
+export default CurrentUserChecker;
