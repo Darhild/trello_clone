@@ -33,7 +33,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "auth0-js": "^9.12.2",
+    "auth0-js": "^9.13.2",
     "core-js": "^3.6.4",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
